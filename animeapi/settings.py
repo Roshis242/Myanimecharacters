@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vosgh(59e+w%c&kc+zjp2u#5flxz0y)_ou)v6j1qz&licbjmc8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     # 'rest_framework.authtoken',
     'animecharacters.apps.AnimecharactersConfig',
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -73,6 +75,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'animeapi.wsgi.application'
 
+
+#CORS
+CORS_ALLOWED_ORIGINS = [
+    "https://animecharactersapi.heroku.com",
+    "http://localhost:8000",
+    "http://127.0.0.1:5500"
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
